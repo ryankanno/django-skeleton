@@ -1,0 +1,17 @@
+# ~/.tmuxinator/sample_project.yml
+
+project_name: sample_project
+project_root: ~/Projects/github/me/django-skeleton
+tabs:
+  - dashboard:
+      layout: main-vertical
+      panes:
+       - workon 2.7 && ./manage.py runserver
+       - sudo python -m smtpd -n -c DebuggingServer localhost:25
+       - redis-server
+       - mysql -u root -p
+  - shells: 
+      layout: main-vertical
+      panes:
+       - /bin/bash 
+       - workon 2.7 && ./manage.py shell
