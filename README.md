@@ -1,7 +1,8 @@
 Django Skeleton
 ===============
 
-A Django skeleton I use to help with creating new Django 1.4 projects.  
+Here be dragons! 
 
-Beware!  I'm still in the middle of updating this library.  Hehe.
+I'm still in the process of updating this project.
 
+It's pretty apparent what this project is.  Enjoy.
