@@ -13,5 +13,4 @@ tabs:
   - shells: 
       layout: main-vertical
       panes:
-       - /bin/bash 
        - workon 2.7 && ./manage.py shell
