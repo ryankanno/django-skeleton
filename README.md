@@ -5,4 +5,9 @@ Here be dragons!
 
 I'm still in the process of updating this project.
 
-It's pretty apparent what this project is.  Enjoy.
+It's pretty apparent what this project is.  
+
+I'll be tracking Django 1.4
+
+Enjoy.
+
