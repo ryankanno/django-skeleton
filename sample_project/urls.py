@@ -3,6 +3,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from www import views as www_views
+
 urlpatterns = patterns('',
+     url(r'^$', www_views.slash, name="slash"),
      url(r'^admin/', include(admin.site.urls)),
 )

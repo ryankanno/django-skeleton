@@ -1,7 +1,13 @@
-# Django settings for sample_project project.
+import os, sys
+
+# PROJECT_ROOT is above settings dir
+PROJECT_ROOT = os.path.normpath(os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "lib", "django-utilities"))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -123,7 +129,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'sample_app'
+    'www',
+    'sample_app',
 )
 
 # A sample logging configuration. The only tangible logging
