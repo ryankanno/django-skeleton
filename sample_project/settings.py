@@ -4,6 +4,7 @@ import os, sys
 PROJECT_ROOT = os.path.normpath(os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "lib", "django-utilities"))
+sys.path.insert(1, os.path.join(PROJECT_ROOT, "lib", "django-templates"))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -115,7 +116,6 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, "templates")
 )
 
 INSTALLED_APPS = (
@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'django-templates',
     'www',
     'sample_app',
 )

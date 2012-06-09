@@ -1,3 +1,6 @@
 [submodule "lib/django-utilities"]
 	path = lib/django-utilities
 	url = https://github.com/ryankanno/django-utilities
+[submodule "lib/django-templates"]
+	path = lib/django-templates
+	url = https://github.com/ryankanno/django-templates.git
