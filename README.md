@@ -13,7 +13,7 @@ Enjoy.
 
 
 Features 
-========
+--------
 
 * Custom fabfile
 * Templates via [django-templates](http://github.com/ryankanno/django-templates/)
