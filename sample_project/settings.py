@@ -97,6 +97,17 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    'utilities.context_processors.settings',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -163,6 +174,10 @@ LOGGING = {
         },
     }
 }
+
+GOOGLE_ANALYTICS_API_KEY = "123"
+
+EXPOSED_SETTINGS = ("GOOGLE_ANALYTICS_API_KEY",)
 
 try:
     from settings_local import *
