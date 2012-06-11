@@ -17,3 +17,9 @@ Features
 
 * Custom fabfile
 * Templates via [django-templates](http://github.com/ryankanno/django-templates/)
+
+
+Install
+-------
+
+* Run `pip install -r etc/requirements.txt`
