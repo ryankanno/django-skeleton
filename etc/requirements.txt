@@ -3,3 +3,4 @@ South==0.7.3
 -e hg+http://bitbucket.org/ubernostrum/django-registration/#egg=registration
 -e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=django-debug-toolbar
 -e git+https://github.com/django-extensions/django-extensions.git#egg=django-extensions
+-e hg+https://bitbucket.org/david/django-storages/#egg=django-storages
