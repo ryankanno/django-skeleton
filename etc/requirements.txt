@@ -7,3 +7,6 @@ MySQL-Python==1.2.3
 -e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=django-debug-toolbar
 -e git+https://github.com/django-extensions/django-extensions.git#egg=django-extensions
 -e hg+https://bitbucket.org/david/django-storages/#egg=django-storages
+
+-e git+https://github.com/ryankanno/django-templates.git#egg=django-templates
+-e git+https://github.com/ryankanno/django-registration-templates.git#egg=django-registration-templates
