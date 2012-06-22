@@ -8,8 +8,9 @@ admin.autodiscover()
 from www import views as www_views
 
 urlpatterns = patterns('',
-     url(r'^$', www_views.slash, name="slash"),
-     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', www_views.slash, name="slash"),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^accounts/', include('registration.backends.default.urls')),
 )
 
 if settings.DEBUG:

@@ -127,6 +127,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, 'templates')
 )
 
 INSTALLED_APPS = (
@@ -142,6 +143,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'registration',
+    'registration_templates',
     'django-templates',
     'www',
     'sample_app',
