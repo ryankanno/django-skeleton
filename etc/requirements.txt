@@ -1,7 +1,7 @@
 South==0.7.5
 Django==1.4.0
 celery==2.5.5
-MySQL-Python==1.2.3
+#MySQL-Python==1.2.3
 
 -e hg+http://bitbucket.org/ubernostrum/django-registration/#egg=registration
 -e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=django-debug-toolbar

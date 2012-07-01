@@ -18,11 +18,11 @@ Configuration
 env.root         = os.path.abspath(os.path.dirname(__file__)) 
 
 # project name
-env.project_name = ''
+env.project_name = 'skeleton'
 
 # paths
 # > remote
-env.path         = '' % env 
+env.path         = '/var/www/apps/%(project_name)s' % env 
 env.env_path     = '%(path)s/env'  % env
 env.repo_path    = '%(path)s/repo' % env
 env.rel_path     = '%(path)s/rel'  % env
@@ -40,8 +40,8 @@ env.python       = 'python2.7'
 env.utc_ts       = gmtime()
 env.utc_ts_str   = strftime('%Y%m%d_%H%M%S', env.utc_ts)
 
-env.user         = ''
-env.git_repo     = ''
+env.user         = 'django'
+env.git_repo     = 'https://github.com/ryankanno/django-skeleton.git'
 env.num_releases = 5
 env.cache_buster = ''
 
@@ -52,8 +52,8 @@ Environments
 @task
 def production():
     env.settings = 'production'
-    env.hosts    = []
-    env.roledefs.update({'www': []})
+    env.hosts    = ['88.88.88.88']
+    env.roledefs.update({'www': ['88.88.88.88']})
 
 
 @task
@@ -64,10 +64,6 @@ def staging():
 @task
 def local():
     env.settings = 'local'
-
-    env.path      = '' % env
-    env.env_path  = '%(path)s/env' % env
-    env.repo_path = '%(path)s/repo' % env
 
 
 """
@@ -102,18 +98,8 @@ def setup_directories():
         run('mkdir -p %(rel_path)s' % env)
 
 # The following need to be setup:
-# sudo aptitude install nginx
-# sudo aptitude install python-virtualenv
-# sudo aptitude install virtualenvwrapper
 # sudo aptitude install git
-# sudo aptitude install mysql-server
-# sudo aptitude install python-dev
 # sudo aptitude install uwsgi
-# sudo aptitude install gettext
-
-# sudo aptitude install libmysqlclient-dev
-# pip install http://sourceforge.net/projects/mysql-python/files/mysql-python-test/1.2.3c1/MySQL-python-1.2.3c1.tar.gz/download
-
 
 def setup_virtualenv():
     if not exists('%(env_path)s/bin' % env):
@@ -126,7 +112,7 @@ def setup_virtualenv():
 def install_requirements():
     """ Install pip requirements.txt """
     with virtualenv():
-        run('pip install -E %(env_path)s -r %(pip_req_file)s' % env)
+        run('pip install -r %(pip_req_file)s' % env)
 
 
 def clone_repo():
