@@ -17,7 +17,7 @@ Configuration
 # root 
 env.root         = os.path.abspath(os.path.dirname(__file__)) 
 
-# project name
+# project 
 env.project_name = 'skeleton'
 
 # paths
@@ -139,14 +139,16 @@ def copy_to_releases():
 
 
 def configure_app():
-    run('cp %(rel_path)s/%(utc_ts_str)s/settings_%(settings)s.py %(rel_path)s/%(utc_ts_str)s/settings.py' % env)
-    put('%(root)s/settings_local.py' % env, '%(rel_path)s/%(utc_ts_str)s/settings_local.py' % env)
-    sed('%(rel_path)s/%(utc_ts_str)s/templates/base.html' % env, 
-        '%(cache_buster)s' % env, str(calendar.timegm(env.utc_ts)))
+    # TODO : Figure out how to configure generic app.
+    #run('cp %(rel_path)s/%(utc_ts_str)s/settings_%(settings)s.py %(rel_path)s/%(utc_ts_str)s/settings.py' % env)
+    #put('%(root)s/settings_local.py' % env, '%(rel_path)s/%(utc_ts_str)s/settings_local.py' % env)
+    #sed('%(rel_path)s/%(utc_ts_str)s/templates/base.html' % env, 
+    #    '%(cache_buster)s' % env, str(calendar.timegm(env.utc_ts)))
 
-    with virtualenv():
-        with cd('%(rel_path)s/%(utc_ts_str)s' % env): 
-            run('django-admin.py compilemessages')
+    #with virtualenv():
+    #    with cd('%(rel_path)s/%(utc_ts_str)s' % env): 
+    #        run('django-admin.py compilemessages')
+    pass
 
 
 def symlink_release():
@@ -190,6 +192,12 @@ def keep_num_releases(num_releases):
             for release in del_releases:
                 run('rm -rf %s' % release)
 
+
+def find_files(directory, pattern):
+    for root, dirs, files in os.walk(directory):
+        for basename in files:
+            if fnmatch.fnmatch(basename, pattern):
+                yield os.path.join(root, basename)
 
 """
 Setup
