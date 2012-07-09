@@ -29,10 +29,6 @@ env.rel_path     = '%(path)s/rel'  % env
 env.curr_path    = '%(path)s/current' % env
 
 env.pip_req_file = '%(repo_path)s/etc/requirements.txt' % env
-env.maint_file   = '%(curr_path)s/requirements.txt' % env
-
-# > local 
-env.maint_lfile  = '%(root)s/etc/maintenance.html.tmpl' % env
 
 # config
 env.activate     = 'source %(env_path)s/bin/activate' % env
@@ -41,6 +37,7 @@ env.utc_ts       = gmtime()
 env.utc_ts_str   = strftime('%Y%m%d_%H%M%S', env.utc_ts)
 
 env.user         = 'django'
+env.password     = 'django'
 env.git_repo     = 'https://github.com/ryankanno/django-skeleton.git'
 env.num_releases = 5
 env.cache_buster = ''
