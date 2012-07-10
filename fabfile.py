@@ -203,8 +203,15 @@ Setup
 def configure_www(file):
     """ Configure the Nginx www server"""
     require('settings', provided_by=[production, staging, local])
+    context = {
+            'server_name': env.project_name, 
+            'curr_path': env.curr_path, 
+            'django_admin_media_path':''
+    }
+    upload_template(file, 
+        '/etc/nginx/sites-available/%(project_name)s' % env,
+        context=context, use_sudo=True)
 
-    put(file, '/etc/nginx/sites-available/%(project_name)s' % env, use_sudo=True)
     sudo('ln -Fs /etc/nginx/sites-available/%(project_name)s /etc/nginx/sites-enabled/%(project_name)s' % env)
     www('restart')
 
