@@ -15,6 +15,7 @@ framework.
 """
 import os
 
+site.addsitedir('/var/www/apps/skeleton/env/lib/python2.7/site-packages')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sample_project.settings")
 
 # This application object is used by any WSGI server configured to use this

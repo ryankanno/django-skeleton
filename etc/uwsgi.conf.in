@@ -1,15 +1,13 @@
 <uwsgi>
     <socket>127.0.0.1:6969</socket>
     <pythonpath>/var/www/apps/skeleton/current</pythonpath>
-    <module>wsgi</module>
+    <module>sample_project.wsgi:application</module>
     <plugins>python</plugins>
     <processes>1</processes>
-    <pidfile>/var/run/uwsgi/%%n/pid</pidfile>
     <daemonize/>
-    <uid>33</uid>
-    <gid>33</gid>
     <enable-threads/>
     <master/>
     <harakiri>120</harakiri>
     <max-requests>5000</max-requests>
+    <disable-logging>false</disable-logging>
 </uwsgi>
