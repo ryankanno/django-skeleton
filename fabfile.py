@@ -206,13 +206,12 @@ def configure_www(file):
     context = {
             'server_name': env.project_name, 
             'curr_path': env.curr_path, 
-            'django_admin_media_path':''
+            'django_admin_media_path':'/var/www'
     }
     upload_template(file, 
-        '/etc/nginx/sites-available/%(project_name)s' % env,
+        '/etc/nginx/nginx.conf',
         context=context, use_sudo=True)
 
-    sudo('ln -Fs /etc/nginx/sites-available/%(project_name)s /etc/nginx/sites-enabled/%(project_name)s' % env)
     www('restart')
 
 
