@@ -94,9 +94,6 @@ def setup_directories():
         run('mkdir -p %(repo_path)s' % env)
         run('mkdir -p %(rel_path)s' % env)
 
-# The following need to be setup:
-# sudo aptitude install git
-# sudo aptitude install uwsgi
 
 def setup_virtualenv():
     if not exists('%(env_path)s/bin' % env):
@@ -121,7 +118,7 @@ def clone_repo():
 def checkout():
     """ Checkout """
     with cd(env.repo_path):
-        run('git checkout %(branch)s; git pull origin %(branch)s' % env)
+        run('git checkout %(branch)s; git pull origin %(branch)s; git submodule update --init' % env)
 
 
 def service(name, *actions):
