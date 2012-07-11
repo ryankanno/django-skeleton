@@ -1,10 +1,10 @@
 <uwsgi>
     <socket>127.0.0.1:6969</socket>
-    <pythonpath>/home/apps/sample_app/current</pythonpath>
+    <pythonpath>/var/www/apps/skeleton/current</pythonpath>
     <module>wsgi</module>
     <plugins>python</plugins>
     <processes>1</processes>
-    <pidfile>/var/run/uwsgi/%n/pid</pidfile>
+    <pidfile>/var/run/uwsgi/%%n/pid</pidfile>
     <daemonize/>
     <uid>33</uid>
     <gid>33</gid>

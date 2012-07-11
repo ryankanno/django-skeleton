@@ -215,6 +215,18 @@ def configure_www(file):
     www('restart')
 
 
+@task
+def configure_uwsgi(file):
+    """ Configure UWSGI app server"""
+    require('settings', provided_by=[production, staging, local])
+    upload_template(file, 
+        '/etc/uwsgi/apps-available/%(project_name)s' % env,
+        use_sudo=True)
+
+    sudo('ln -fs /etc/uwsgi/apps-available/%(project_name)s /etc/uwsgi/apps-enabled/%(project_name)s.xml' % env)
+    app('restart')
+
+
 """
 Release
 """
