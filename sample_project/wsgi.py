@@ -13,7 +13,7 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
-import os
+import site, os
 
 site.addsitedir('/var/www/apps/skeleton/env/lib/python2.7/site-packages')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sample_project.settings")
