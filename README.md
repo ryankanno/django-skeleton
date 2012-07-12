@@ -5,16 +5,14 @@
 This is a base skeleton [Django](https://www.djangoproject.com/) project
 configured with the following libraries in a pip requirements.txt file:
 
-* South==0.7.5
-* Django==1.4.0
-
-* -e hg+http://bitbucket.org/ubernostrum/django-registration/#egg=registration
-* -e git+https://github.com/django-debug-toolbar/django-debug-toolbar.git#egg=django-debug-toolbar
-* -e git+https://github.com/django-extensions/django-extensions.git#egg=django-extensions
-* -e hg+https://bitbucket.org/david/django-storages/#egg=django-storages
-
-* -e git+https://github.com/ryankanno/django-templates.git#egg=django-templates
-* -e git+https://github.com/ryankanno/django-registration-templates.git#egg=django-registration-templates
+* django
+* south
+* django-registration
+* django-debug-toolbar
+* django-extensions
+* django-storages
+* django-templates
+* django-registration-templates
 
 Ideally, this project can be used in conjunction with [django-vagrant](http://github.com/ryankanno/django-vagrant/) 
 as there's a custom fabfile so you don't have to pollute your own development
@@ -53,7 +51,7 @@ instance.
 * `fab production configure_uwsgi:file=etc/uwsgi.conf.in`
 
 
-###Deploy
+##Deploy
 
 Once you've made changes to the skeleton project, run the following
 
