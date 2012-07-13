@@ -55,7 +55,8 @@ instance.
 
 Once you've made changes to the skeleton project, run the following
 
-* `fab production master deploy`
+* `fab production master deploy` # deploy the codes
+* `fab production app:start`     # restart the uwsgi server
 
 Point your browser at `http://88.88.88.88`
 
