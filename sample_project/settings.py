@@ -4,7 +4,6 @@ import os, sys
 PROJECT_ROOT = os.path.normpath(os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "lib", "django-utilities"))
-sys.path.insert(1, os.path.join(PROJECT_ROOT, "lib", "django-templates"))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -114,8 +113,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'sample_project.urls'
@@ -124,9 +122,6 @@ ROOT_URLCONF = 'sample_project.urls'
 WSGI_APPLICATION = 'sample_project.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_ROOT, 'templates')
 )
 
@@ -138,10 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admin',
     'registration',
     'registration_templates',
     'django-templates',
@@ -179,7 +171,6 @@ LOGGING = {
 }
 
 GOOGLE_ANALYTICS_API_KEY = "123"
-
 EXPOSED_SETTINGS = ("GOOGLE_ANALYTICS_API_KEY",)
 
 try:
