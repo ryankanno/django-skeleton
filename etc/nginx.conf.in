@@ -47,7 +47,7 @@ http {
 
         error_page 503 @maintenance;
         location @maintenance {
-          rewrite ^(.*)$ /maintenance.html break;
+            rewrite ^(.*)$ /maintenance.html break;
         }
 
         if (-f $document_root/maintenance.html) {
@@ -76,11 +76,6 @@ http {
             log_not_found off;
             tcp_nodelay off;
             break;
-        }
-
-        location /media/admin/ {
-            autoindex on;
-            alias %(django_admin_media_path)s;
         }
 
         location /media/ {

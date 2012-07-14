@@ -12,6 +12,8 @@ from time import gmtime, strftime
 
 """
 Configuration
+
+#CHANGEME
 """
 
 # root 
@@ -19,6 +21,7 @@ env.root         = os.path.abspath(os.path.dirname(__file__))
 
 # project 
 env.project_name = 'skeleton'
+env.django_project_dir  = 'sample_project'
 
 # paths
 # > remote
@@ -29,6 +32,9 @@ env.rel_path     = '%(path)s/rel'  % env
 env.curr_path    = '%(path)s/current' % env
 
 env.pip_req_file = '%(repo_path)s/etc/requirements.txt' % env
+
+# > local
+env.maintenance_file = '%(root)s/etc/maintenance.html.tmpl' % env
 
 # config
 env.activate     = 'source %(env_path)s/bin/activate' % env
@@ -133,16 +139,13 @@ def copy_to_releases():
 
 
 def configure_app():
-    # TODO : Figure out how to configure generic app.
-    #run('cp %(rel_path)s/%(utc_ts_str)s/settings_%(settings)s.py %(rel_path)s/%(utc_ts_str)s/settings.py' % env)
-    #put('%(root)s/settings_local.py' % env, '%(rel_path)s/%(utc_ts_str)s/settings_local.py' % env)
+    run('cp %(rel_path)s/%(utc_ts_str)s/%(django_project_dir)s/settings_%(settings)s.py \
+            %(rel_path)s/%(utc_ts_str)s/%(django_project_dir)s/settings.py' % env)
+    
+    manage('collectstatic', '%(rel_path)s/%(utc_ts_str)s' % env)
+
     #sed('%(rel_path)s/%(utc_ts_str)s/templates/base.html' % env, 
     #    '%(cache_buster)s' % env, str(calendar.timegm(env.utc_ts)))
-
-    #with virtualenv():
-    #    with cd('%(rel_path)s/%(utc_ts_str)s' % env): 
-    #        run('django-admin.py compilemessages')
-    pass
 
 
 def symlink_release():
@@ -203,7 +206,7 @@ def configure_www(file):
     context = {
             'server_name': env.project_name, 
             'curr_path': env.curr_path, 
-            'django_admin_media_path':'/var/www'
+            'django_admin_media_path': env.django_admin_media
     }
     upload_template(file, 
         '/etc/nginx/nginx.conf',
@@ -240,7 +243,7 @@ def setup():
 
 
 @task
-def deploy(with_maintenance=False):
+def deploy(with_maintenance=False, update_requirements=False):
     """ Checkout, configure, symlink release """
     require('settings', provided_by=[production, staging, local])
     require('branch', provided_by=[master, branch])
@@ -251,6 +254,10 @@ def deploy(with_maintenance=False):
 
     checkout()
     copy_to_releases()
+
+    if update_requirements:
+        install_requirements()
+
     configure_app()
     symlink_release()
 
@@ -277,8 +284,7 @@ def maintenance_up():
     """ Prompts for a reason why we are down, then deploys maintenance page """
     ctx = {}
     ctx['reason'] = prompt("Why are we downs?")
-    upload_template('%(main_lpath)' % env,
-        '%(curr_path)s/maintenance.html' % env, context=ctx, backup=False)
+    upload_template('%(maintenance_file)s' % env, '%(curr_path)s/maintenance.html' % env, context=ctx, backup=False)
 
 
 @task
@@ -313,3 +319,10 @@ def app(action):
 def cache(action):
     if action == 'purge':
         run('redis-cli FLUSHALL')
+
+@task
+@roles('www')
+def manage(command, path=env.curr_path):
+    with virtualenv():
+        with cd(path):
+            run('python manage.py %s' % (command,))
