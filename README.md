@@ -61,3 +61,28 @@ Once you've made changes to the skeleton project, run the following
 Point your browser at `http://88.88.88.88`
 
 Win.
+
+##Supported Fabric Commands
+
+###Redeploy codes
+* `fab production master deploy` # deploy the codes
+
+or
+
+* `fab production master deploy:update_requirements=True` # deploy the codes with requirements
+
+###Web server
+* `fab production configure_www:file=etc/nginx.conf.in` # Update conf file - uses relative path from repo root
+* `fab production www:[start|stop|restart]` # pass through to init.d commands
+
+###App server
+* `fab production configure_uwsgi:file=etc/uwsgi.conf.in` # Update conf file - uses relative path from repo root
+* `fab production app:[start|stop|restart]` # pass through to init.d commands
+
+###Maintenance pages
+* `fab production maintenance_up` # Will prompt for a reason
+* `fab production maintenance_down` # Removes the maintenance page
+
+###Execute manage.py commands
+* `fab production manage:syncdb` # Run syncdb
+* `fab production manage:collectstatic` # Run collectstatic
