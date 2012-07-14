@@ -206,7 +206,6 @@ def configure_www(file):
     context = {
             'server_name': env.project_name, 
             'curr_path': env.curr_path, 
-            'django_admin_media_path': env.django_admin_media
     }
     upload_template(file, 
         '/etc/nginx/nginx.conf',
