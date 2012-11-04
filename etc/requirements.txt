@@ -1,5 +1,5 @@
 South==0.7.5
-Django==1.4.0
+Django==1.4.2
 celery==2.5.5
 MySQL-Python==1.2.3
 
