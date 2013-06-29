@@ -35,7 +35,7 @@ installed, please mozy on over and install it.  You'll thank me later. (Maybe
 :D)
 
 You'll also probably need Python and Fabric installed.  At the time of this
-writing, I tested this with Python 2.7.3 and Fabric 1.4.3
+writing, I tested this with Python 2.7.5 and Fabric 1.6.1
 
 
 ##Install
